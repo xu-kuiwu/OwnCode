@@ -1,0 +1,56 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /wuqin
+mybatis:
+  type-aliases-package: com.wuqin.*.po
+  mapper-locations: classpath*:mapper/*/*.xml,classpath*;mapper/*/*/*.xml
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+spring:
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 352158500@qq.com
+    password: cqxnabakowyhcaea
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+        debug: true
+    from: 352158500@qq.com
+  #  datasource:
+#    url: jdbc:mysql://localhost:3306/wqdb?userSSL=false&serverTimezone=CTT
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: 123456
+  profiles:
+    active: sit
+
+  shardingsphere:
+    datasource:
+      names: master
+      master:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: 123456
+        jdbcUrl: jdbc:mysql://localhost:3306/wqdb?userSSL=false&serverTimezone=CTT
+    sharding:
+      props:
+        sq.show: true
+      tables:
+        t_dict_param:
+          actual-data-nodes: master.t_dict_param_${0..9}
+          table-strategy:
+            inline:
+              sharding-column: cust_id
+              algorithm-expression: t_dict_param_${Long.valueOf(cust_id) % 10}
+      binding-tables: t_dict_param
+

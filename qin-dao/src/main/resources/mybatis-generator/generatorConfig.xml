@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.wuqin.mapper.BaseMapper"/>
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">
+            <property name="builder" value="false"/>
+            <property name="allArgsConstructor" value="false"/>
+        </plugin>
+
+        <commentGenerator type="com.wuqin.mapper.BaseCommentGenerator"/>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost/wqdb"
+                        userId="root"
+                        password="123456"></jdbcConnection>
+        <javaModelGenerator targetPackage="com.com.base.po"
+                            targetProject="src/main/java"></javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper/base"
+                         targetProject="src/main/resources"></sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.com.base.dao"
+                             type="XMLMAPPER"
+                             targetProject="src/main/java"></javaClientGenerator>
+
+        <table tableName="t_reference_rec" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="enableSubPackages" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+<!--            <columnRenamingRule searchString="activity_" replaceString=""/>-->
+        </table>
+    </context>
+
+</generatorConfiguration>
