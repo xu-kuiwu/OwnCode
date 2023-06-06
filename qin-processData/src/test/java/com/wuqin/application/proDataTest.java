@@ -57,4 +57,13 @@ public class proDataTest {
             log.error("文件处理异常，错误信息:{}",e.getMessage());
         }
     }
+
+    @Test
+    public void generateTableXlsx(){
+        try {
+            FileController.generateTableXlsx();
+        }catch (Exception e){
+            log.error("文件处理异常，错误信息:{}",e.getMessage());
+        }
+    }
 }

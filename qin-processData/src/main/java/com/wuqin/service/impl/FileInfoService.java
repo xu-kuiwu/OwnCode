@@ -3,10 +3,13 @@ package com.wuqin.service.impl;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.RandomUtil;
+import com.alibaba.excel.EasyExcel;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.wuqin.common.exception.WQException;
 import com.wuqin.dto.FileInfoDto;
+import com.wuqin.dto.FileXlsxInfo;
 import com.wuqin.service.IFileInfoService;
 import com.wuqin.utils.EmailUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +20,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.assertj.core.internal.InputStreams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -332,9 +336,45 @@ public class FileInfoService implements IFileInfoService {
         log.info("----------end 耗时:{} s", (System.currentTimeMillis() - start) / 1000);
     }
 
+    @Override
+    public void generateTableXlsx() {
+        long start = System.currentTimeMillis();
+        List<FileXlsxInfo> infoList = Lists.newArrayList();
+        for (int a = 0; a < 10; a++) {
+            FileXlsxInfo inf = new FileXlsxInfo();
+            inf.setCustNo("100000" + a);
+            inf.setIdNumber("3400000000" + a);
+            inf.setAmount(a + "10");
+            inf.setType(String.valueOf(a));
+            inf.setRemark("测试" + a);
+            infoList.add(inf);
+        }
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        EasyExcel.write(os, FileXlsxInfo.class).sheet("sheet1").doWrite(infoList);
+        byte[] bytes = os.toByteArray();
+
+        try {
+            InputStream inputStreams = new ByteArrayInputStream(bytes);
+
+            String fileName = System.currentTimeMillis() + RandomUtil.randomNumbers(4) + ".xlsx";
+            File file = new File("C:\\Users\\MI\\Desktop\\" + fileName);
+            FileOutputStream osWrite = new FileOutputStream(file);
+            byte[] b = new byte[1024];
+            while (inputStreams.read(b) != -1){
+                osWrite.write(b);
+            }
+            osWrite.close();
+            inputStreams.close();
+        } catch (Exception e) {
+            log.error("-------- 写入文件失败 异常信息：", e);
+        }
+        log.info("----------end 耗时:{} s", (System.currentTimeMillis() - start) / 1000);
+    }
+
     /**
      * 文件读取重新生成新文件
-     * @param fileName  文件名称 txt格式
+     *
+     * @param fileName 文件名称 txt格式
      * @throws Exception
      */
     private void writeFile(String fileName) throws Exception {
@@ -383,11 +423,11 @@ public class FileInfoService implements IFileInfoService {
             log.info("----共读取条数 count=[{}] 条记录", count);
         } catch (Exception e) {
             log.error("------ 数据异常", e);
-        }finally {
-            if(br!= null){
+        } finally {
+            if (br != null) {
                 br.close();
             }
-            if(isr != null){
+            if (isr != null) {
                 isr.close();
             }
             outPut.flush();

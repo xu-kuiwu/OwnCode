@@ -17,4 +17,6 @@ public interface IFileInfoService {
     void sendEmail();
 
     void newFile();
+
+    void generateTableXlsx();
 }

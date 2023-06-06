@@ -88,4 +88,11 @@ public class FileController {
         iFileInfoService.newFile();
         return ResultVo.success();
     }
+
+    @PostMapping("/generateTableXlsx")
+    @ApiOperation(value = "文件管理-生成表格文件", notes = "生成文件")
+    public ResultVo generateTableXlsx() {
+        iFileInfoService.generateTableXlsx();
+        return ResultVo.success();
+    }
 }
