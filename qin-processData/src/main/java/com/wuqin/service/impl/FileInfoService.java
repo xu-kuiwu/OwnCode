@@ -336,6 +336,9 @@ public class FileInfoService implements IFileInfoService {
         log.info("----------end 耗时:{} s", (System.currentTimeMillis() - start) / 1000);
     }
 
+    /**
+     * 直接生成表格 xlsx文件
+     */
     @Override
     public void generateTableXlsx() {
         long start = System.currentTimeMillis();
