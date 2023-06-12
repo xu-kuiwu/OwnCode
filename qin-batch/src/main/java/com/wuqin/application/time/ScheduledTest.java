@@ -25,6 +25,6 @@ public class ScheduledTest {
 
     @Scheduled(cron="00 00 * ? * * ")
     private void run(){
-        log.info("这是一个定时任务测试类");
+        log.info("这是一个定时任务测试类,每小时执行一次");
     }
 }
