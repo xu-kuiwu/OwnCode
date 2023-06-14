@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 家长管理Controller
+ * 参数系统相关设置
  */
 @RestController
-@Api(tags = "家长管理")
-@RequestMapping("/parent")
-public class parentController {
+@Api(tags = "参数设置")
+@RequestMapping("/param")
+public class paramController {
 }
