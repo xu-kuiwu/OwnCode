@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.com.base.dao.TPupilInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.com.base.po.TPupilInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="pupil_no" property="pupilNo" jdbcType="VARCHAR" />
+    <result column="pupil_name" property="pupilName" jdbcType="VARCHAR" />
+    <result column="pupil_class" property="pupilClass" jdbcType="VARCHAR" />
+    <result column="birth_date" property="birthDate" jdbcType="VARCHAR" />
+    <result column="enroll_date" property="enrollDate" jdbcType="VARCHAR" />
+    <result column="parent_no" property="parentNo" jdbcType="VARCHAR" />
+    <result column="classroom" property="classroom" jdbcType="VARCHAR" />
+    <result column="course_info" property="courseInfo" jdbcType="VARCHAR" />
+    <result column="course_start" property="courseStart" jdbcType="VARCHAR" />
+    <result column="course_end" property="courseEnd" jdbcType="VARCHAR" />
+    <result column="class_hour_num" property="classHourNum" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="create_no" property="createNo" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_no" property="updateNo" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, pupil_no, pupil_name, pupil_class, birth_date, enroll_date, parent_no, classroom, 
+    course_info, course_start, course_end, class_hour_num, status, create_no, create_time, 
+    update_no, update_time
+  </sql>
+</mapper>

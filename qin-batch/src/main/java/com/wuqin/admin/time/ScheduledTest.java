@@ -1,4 +1,4 @@
-package com.wuqin.application.time;
+package com.wuqin.admin.time;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;

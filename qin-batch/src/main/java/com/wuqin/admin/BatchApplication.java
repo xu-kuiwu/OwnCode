@@ -1,4 +1,4 @@
-package com.wuqin.application;
+package com.wuqin.admin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -29,6 +29,7 @@ public class BatchApplication extends SpringBootServletInitializer {
         String port = env.getProperty("server.port");
         String path = env.getProperty("server.servlet.context-path");
         log.info("\n-----------------------------------------------\n\t" +
+                "\n------------------batch-----------------------------\n\t" +
                 "Application wuqin-batch is running! Acess URL:\n\t" +
                 "Local: \thttp://localhost:" + port + path + "\n\t" +
                 "External: \thttp://" + ip + ":" + port + path + "\n\t" +

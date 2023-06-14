@@ -1,4 +1,4 @@
-package com.wuqin.application;
+package com.wuqin.admin;
 
 import com.google.common.collect.Lists;
 import com.wuqin.controller.FileController;

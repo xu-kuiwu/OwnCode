@@ -24,7 +24,7 @@
 
         <!-- 数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost/wqdb"
+                        connectionURL="jdbc:mysql://localhost/esdb"
                         userId="root"
                         password="123456"></jdbcConnection>
         <javaModelGenerator targetPackage="com.com.base.po"
@@ -37,7 +37,7 @@
                              type="XMLMAPPER"
                              targetProject="src/main/java"></javaClientGenerator>
 
-        <table tableName="t_reference_rec" enableCountByExample="false"
+        <table tableName="t_teacher_info" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
