@@ -1,7 +1,7 @@
 package com.wuqin.dto;
 
 import com.wuqin.common.constants.CommonConstants;
-import com.wuqin.common.utils.StringUtil;
+import com.wuqin.common.utils.StrUtil;
 import lombok.Data;
 import org.slf4j.MDC;
 
@@ -31,7 +31,7 @@ public class LogInfo {
 
     public void begin(){
         if(null == this.invokeNo){
-            MDC.put(CommonConstants.STR_INVOKE_NO, StringUtil.getUUID());
+            MDC.put(CommonConstants.STR_INVOKE_NO, StrUtil.getUUID());
         }
     }
 

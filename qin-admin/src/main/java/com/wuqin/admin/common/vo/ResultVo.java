@@ -1,5 +1,6 @@
 package com.wuqin.admin.common.vo;
 
+import com.github.pagehelper.PageInfo;
 import com.wuqin.common.constants.Constant;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -57,5 +58,12 @@ public class ResultVo<T> implements Serializable {
         this.message = message;
         this.code = Constant.SERVER_ERROR;
         return this;
+    }
+
+    public static ResultVo success(PageInfo pageInfo){
+        ResultVo result = success();
+        result.total = pageInfo.getTotal();
+        result.data = pageInfo.getList();
+        return result;
     }
 }

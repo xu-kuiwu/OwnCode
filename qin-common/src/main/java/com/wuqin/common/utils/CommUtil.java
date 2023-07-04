@@ -136,26 +136,6 @@ public class CommUtil {
     }
 
     /**
-     * 获取当前系统时间
-     *
-     * @return
-     */
-    public static Timestamp getSystemTime() {
-        return new Timestamp(System.currentTimeMillis());
-    }
-
-    /**
-     * 获取当前系统时间
-     * 时间格式：yyyy-MM-dd HH:mm:ss
-     *
-     * @return
-     */
-    public static Date getCurrentDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return java.sql.Date.valueOf(sdf.format(new Date()));
-    }
-
-    /**
      * 证件类型
      *
      * @param idType

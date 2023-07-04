@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api(tags = "参数设置")
 @RequestMapping("/param")
-public class paramController {
+public class ParamController {
 }

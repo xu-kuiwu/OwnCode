@@ -13,7 +13,7 @@ public class TNoticeInfo implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     /**
      * 公告编号

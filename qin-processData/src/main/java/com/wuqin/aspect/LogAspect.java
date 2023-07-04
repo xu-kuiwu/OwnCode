@@ -6,7 +6,6 @@ import com.wuqin.common.constants.CommonConstants;
 import com.wuqin.common.log.MonitorInfo;
 import com.wuqin.common.log.MonitorLog;
 import com.wuqin.common.utils.DateUtil;
-import com.wuqin.common.utils.StringUtil;
 import com.wuqin.dto.LogInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -77,7 +76,7 @@ public class LogAspect {
         //获取请求参数
         logInfo.setReqParam(this.getRequestParam(jp));
 
-        logInfo.setGmtCreate(DateUtil.dateToStr(new Date(),DateUtil.DATETIME_FORMAT_23));
+        logInfo.setGmtCreate(DateUtil.dateToStr(new Date(),DateUtil.DATETIME_FORMAT_S));
 
         //入口打印
         this.printIn(logInfo);
