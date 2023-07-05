@@ -1,23 +1,29 @@
 package com.wuqin.common.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+@Slf4j
 public class DateUtil {
     /**
      * yyyy-MM-dd HH:mm:ss.SSS
      */
     public static final String YEAR_MONTH = "yyyyMM";
-    public static final String yyyyMMdd = "yyyyMMdd";
-    public static final String yyyyMMdd_ROW = "yyyy-MM-dd";
+    public static final String YYYYMMDD = "yyyyMMdd";
+    public static final String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
+    public static final String YYYYMMDD_ROW = "yyyy-MM-dd";
     public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static final String DATETIME_FORMAT_S = "yyyy-MM-dd HH:mm:ss.SSS";
 
+    public static final SimpleDateFormat sdf_ymd = new SimpleDateFormat(YYYYMMDD);
+    public static final SimpleDateFormat sdf_ymds = new SimpleDateFormat(YYYYMMDDHHMMSS);
+
     public static String getYYYYMMdd() {
-        SimpleDateFormat sdf = new SimpleDateFormat(yyyyMMdd);
-        return sdf.format(new Date());
+        return sdf_ymd.format(new Date());
     }
 
     /**
@@ -42,8 +48,22 @@ public class DateUtil {
      * @return
      */
     public static Date getCurrentDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return java.sql.Date.valueOf(sdf.format(new Date()));
+        SimpleDateFormat sdf = new SimpleDateFormat(DATETIME_FORMAT);
+        try {
+            return sdf.parse(sdf.format(new Date()));
+        } catch (Exception e) {
+            log.error("getCurrentDate  exception", e);
+        }
+        return new Date();
+    }
+
+    /**
+     * 获取字符型日期
+     *
+     * @return
+     */
+    public static String timeToString() {
+        return sdf_ymds.format(new Date(System.currentTimeMillis()));
     }
 
     /**

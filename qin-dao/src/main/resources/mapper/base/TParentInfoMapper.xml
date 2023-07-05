@@ -28,16 +28,25 @@
         remark, create_no, create_time, update_no, update_time
     </sql>
 
-    <select id="selectOneParentInfo" resultMap="BaseResultMap">
+    <select id="selectOneParentInfo" parameterType="java.util.Map" resultMap="BaseResultMap">
         select
-            <include refid="Base_Column_List"></include>
+        <include refid="Base_Column_List"></include>
         from t_parent_info
         order by id desc
         limit 1
     </select>
 
-    <select id="selectParentCount" resultType="">
-        select id from t_parent_info
+    <select id="selectOneParentInfoTest" parameterType="com.com.base.po.TParentInfo" resultType="com.com.base.po.TParentInfo">
+        select
+        <include refid="Base_Column_List"></include>
+        from t_parent_info
+        order by id desc
+        limit 1
+    </select>
+
+    <select id="selectParentCount" resultType="java.lang.Integer">
+        select id
+        from t_parent_info
         order by id desc
     </select>
 </mapper>

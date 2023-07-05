@@ -1,7 +1,10 @@
 package com.wuqin.admin.dto;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class PupilInfoDto {
     private int id;
 

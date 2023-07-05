@@ -13,4 +13,9 @@ public class CommonConstants {
      * 英文逗号
      */
     public static final String COMMA = ",";
+
+
+    public interface info {
+        public static final String cliat_list = "cliat_list";
+    }
 }

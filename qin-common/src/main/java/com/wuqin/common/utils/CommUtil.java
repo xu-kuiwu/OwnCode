@@ -17,11 +17,20 @@ public class CommUtil {
 
     public static Random r = new Random();
 
-    public static String createActNo(String channelNo) {
+    //
+    public static String gainThreeNoByNo(String channelNo) {
         StringBuffer str = new StringBuffer();
         str.append(channelNo);
-        str.append(timeToString());
+        str.append(DateUtil.timeToString());
         str.append(sixRandomCreate());
+        return str.toString();
+    }
+
+    public static String gainTwoNoByType(String type) {
+        StringBuffer str = new StringBuffer();
+        str.append(type);
+        str.append(DateUtil.timeToString());
+        str.append(RandomUtil.randomNumbers(2));
         return str.toString();
     }
 
@@ -56,16 +65,6 @@ public class CommUtil {
             s = "0" + s;
         }
         return s;
-    }
-
-    /**
-     * 日期转字符串
-     *
-     * @return
-     */
-    private static String timeToString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-        return sdf.format(new Date(System.currentTimeMillis()));
     }
 
     public static String timeToString2() {
@@ -175,13 +174,5 @@ public class CommUtil {
      */
     public static Long getNums(Double num) {
         return Long.parseLong(String.format("%.2f", num).replace(".", ""));
-    }
-
-    public static String createCommonNo(String type) {
-        StringBuffer str = new StringBuffer();
-        str = str.append(type);
-        str = str.append(timeToString());
-        str = str.append(RandomUtil.randomNumbers(2));
-        return str.toString();
     }
 }

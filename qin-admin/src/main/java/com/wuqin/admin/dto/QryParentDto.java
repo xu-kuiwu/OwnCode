@@ -3,7 +3,7 @@ package com.wuqin.admin.dto;
 import lombok.Data;
 
 @Data
-public class QryParentInfo {
+public class QryParentDto {
     /**
      * 家长编号
      */

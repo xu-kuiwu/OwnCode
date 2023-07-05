@@ -6,9 +6,8 @@ import com.com.base.po.TParentInfo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wuqin.admin.dto.ParentInfoDto;
-import com.wuqin.admin.dto.QryParentInfo;
+import com.wuqin.admin.dto.QryParentDto;
 import com.wuqin.admin.service.IParentService;
-import com.wuqin.common.utils.DateUtil;
 import com.wuqin.common.utils.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -25,23 +24,22 @@ public class ParentService implements IParentService {
     private TParentInfoMapper tParentInfoMapper;
 
     @Override
-    public PageInfo<TParentInfo> list(QryParentInfo qryParentInfo, int page, int limit) {
+    public PageInfo<TParentInfo> list(QryParentDto dto, int page, int limit) {
         PageHelper.startPage(page, limit, true);
         Example example = new Example(TParentInfo.class);
         Example.Criteria criteria = example.createCriteria();
-        if (!StringUtils.isEmpty(qryParentInfo.getParentName())) {
-            criteria.andLike("parentName", "%" + qryParentInfo.getParentName() + "%");
+        if (!StringUtils.isEmpty(dto.getParentName())) {
+            criteria.andLike("parentName", "%" + dto.getParentName() + "%");
         }
-        if (!StringUtils.isEmpty(qryParentInfo.getParentNo())) {
-            criteria.andEqualTo("parentNo", qryParentInfo.getParentNo());
+        if (!StringUtils.isEmpty(dto.getParentNo())) {
+            criteria.andEqualTo("parentNo", dto.getParentNo());
         }
-        if (!StringUtils.isEmpty(qryParentInfo.getPhone())) {
-            criteria.andEqualTo("phone", qryParentInfo.getPhone());
+        if (!StringUtils.isEmpty(dto.getPhone())) {
+            criteria.andEqualTo("phone", dto.getPhone());
         }
         example.orderBy("id").desc();
         List<TParentInfo> list = tParentInfoMapper.selectByExample(example);
-//        return PageInfo<>(list);
-        return null;
+        return new PageInfo<>(list);
     }
 
     @Override

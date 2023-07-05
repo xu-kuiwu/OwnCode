@@ -24,7 +24,7 @@ public class MapOrListExampleController {
     @GetMapping(value = "/getPordNo")
     @ApiOperation(value = "产品管理-生成唯一标识", notes = "生成唯一标识")
     public ResultVo getPordNo(String type) {
-        String uniqueNo = CommUtil.createCommonNo("type");
+        String uniqueNo = CommUtil.gainThreeNoByNo("type");
         return ResultVo.success(uniqueNo);
     }
 
