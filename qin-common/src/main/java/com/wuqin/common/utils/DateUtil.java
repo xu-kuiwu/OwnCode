@@ -26,6 +26,10 @@ public class DateUtil {
         return sdf_ymd.format(new Date());
     }
 
+    public static String getDatetimeFormat() {
+        return sdf_ymds.format(new Date());
+    }
+
     /**
      * 获取当前系统时间
      *

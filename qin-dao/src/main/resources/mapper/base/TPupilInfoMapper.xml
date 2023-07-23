@@ -31,4 +31,10 @@
     course_info, course_start, course_end, class_hour_num, status, create_no, create_time, 
     update_no, update_time
   </sql>
+
+  <select id="selectPupilCount" resultType="java.lang.Integer">
+    select id
+    from t_pupil_info
+    order by id desc
+  </select>
 </mapper>

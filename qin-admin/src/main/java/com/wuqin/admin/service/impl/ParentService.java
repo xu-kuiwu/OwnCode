@@ -44,10 +44,8 @@ public class ParentService implements IParentService {
 
     @Override
     public void add(ParentInfoDto dto) {
-        //获取数量
-        int count = tParentInfoMapper.selectParentCount();
         TParentInfo tParentInfo = new TParentInfo();
-        tParentInfo.setParentNo(StrUtil.getParentNo(count + 1));
+        tParentInfo.setParentNo("C".concat(StrUtil.getNo(2)));
         BeanUtil.copyProperties(dto, tParentInfo);
         tParentInfoMapper.insertSelective(tParentInfo);
     }
@@ -59,6 +57,6 @@ public class ParentService implements IParentService {
 
     @Override
     public void delete(int id) {
-
+        tParentInfoMapper.deleteByPrimaryKey(id);
     }
 }

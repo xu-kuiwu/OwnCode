@@ -1,6 +1,5 @@
 package com.wuqin.admin;
 
-import com.wuqin.common.config.log.EnableLog;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +9,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tk.mybatis.spring.annotation.MapperScan;
 
 import java.net.InetAddress;
@@ -18,10 +16,8 @@ import java.net.UnknownHostException;
 
 @Slf4j
 @SpringBootApplication(scanBasePackages = {"com.wuqin"}, exclude = {MultipartAutoConfiguration.class})
-@MapperScan(basePackages = {"com.wuqin.*.dao"})
+@MapperScan(basePackages = {"com.com.base.*"})
 @ComponentScan("com.wuqin")
-@EnableSwagger2
-//@EnableLog
 public class adminApplication extends SpringBootServletInitializer {
     @Override
     public SpringApplicationBuilder configure(SpringApplicationBuilder application) {

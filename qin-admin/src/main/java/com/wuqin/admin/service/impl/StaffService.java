@@ -44,11 +44,11 @@ public class StaffService implements IStaffService {
     @Override
     public void add(TeacherInfoDto dto) {
         //获取数量
-        int count = 0;
-//        int count = tTeacherInfoMapper.selectParentCount();
+        int count = tTeacherInfoMapper.selectTeacherCount();
         TTeacherInfo tTeacherInfo = new TTeacherInfo();
-        tTeacherInfo.setStaffNo(StrUtil.getParentNo(count + 1));
         BeanUtil.copyProperties(dto, tTeacherInfo);
+        String type = "0".equals(dto.getPost()) ? "Q" : "1".equals(dto.getPost()) ? "Z" : "O";
+        tTeacherInfo.setStaffNo(type.concat(StrUtil.getTeacherNo(count + 1)));
         tTeacherInfoMapper.insertSelective(tTeacherInfo);
     }
 
@@ -59,6 +59,6 @@ public class StaffService implements IStaffService {
 
     @Override
     public void delete(int id) {
-
+        tTeacherInfoMapper.deleteByPrimaryKey(id);
     }
 }

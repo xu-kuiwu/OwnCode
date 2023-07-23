@@ -1,6 +1,7 @@
 package com.wuqin.common.utils;
 
 import cn.hutool.core.util.RandomUtil;
+import org.apache.commons.lang3.StringUtils;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -20,7 +21,7 @@ public class CommUtil {
     //
     public static String gainThreeNoByNo(String channelNo) {
         StringBuffer str = new StringBuffer();
-        str.append(channelNo);
+        str.append(StringUtils.isEmpty(channelNo) ? "" : channelNo);
         str.append(DateUtil.timeToString());
         str.append(sixRandomCreate());
         return str.toString();

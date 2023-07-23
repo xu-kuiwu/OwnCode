@@ -16,6 +16,9 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
+/**
+ * 学生相关服务
+ */
 @Slf4j
 @Service
 public class PupilService implements IPupilService {
@@ -44,11 +47,10 @@ public class PupilService implements IPupilService {
     @Override
     public void add(PupilInfoDto dto) {
         //获取数量
-        int count = 0;
-//        int count = tPupilInfoMapper.selectParentCount();
+        int count = tPupilInfoMapper.selectPupilCount();
         TPupilInfo tPupilInfo = new TPupilInfo();
-        tPupilInfo.setParentNo(StrUtil.getParentNo(count + 1));
         BeanUtil.copyProperties(dto, tPupilInfo);
+        tPupilInfo.setParentNo(StrUtil.getPupilNo(count + 1));
         tPupilInfoMapper.insertSelective(tPupilInfo);
     }
 
@@ -59,6 +61,6 @@ public class PupilService implements IPupilService {
 
     @Override
     public void delete(int id) {
-
+        tPupilInfoMapper.deleteByPrimaryKey(id);
     }
 }

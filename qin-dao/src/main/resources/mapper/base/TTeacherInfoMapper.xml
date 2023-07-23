@@ -28,4 +28,10 @@
     id, staff_no, teacher_name, phone, DEGREE, graduated_from, birth_date, salary, status, 
     post, certification_flag, create_no, create_time, update_no, update_time
   </sql>
+
+  <select id="selectPupilCount" resultType="java.lang.Integer">
+    select id
+    from t_teacher_info
+    order by id desc
+  </select>
 </mapper>
